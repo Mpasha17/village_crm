@@ -99,16 +99,22 @@ export default function HouseholdTable() {
                 }
             },
             {
-                accessorKey: 'head_name',
-                header: 'Head Name',
-                cell: ({ row }) => (
-                    <div>
-                        <div className="font-medium text-gray-900">{row.original.head_name}</div>
-                        {row.original.head_gender && (
-                            <div className="text-sm text-gray-500">{row.original.head_gender}</div>
-                        )}
-                    </div>
-                )
+                accessorKey: 'head_name_male',
+                header: 'House yajamani (Female)',
+                cell: ({ getValue }) => {
+                    const name = getValue()
+                    if (!name) return <span className="text-gray-400">N/A</span>
+                    return <span className="text-sm text-gray-700">{name}</span>
+                }
+            },
+            {
+                accessorKey: 'head_name_female',
+                header: 'House yajamana (Male)',
+                cell: ({ getValue }) => {
+                    const name = getValue()
+                    if (!name) return <span className="text-gray-400">N/A</span>
+                    return <span className="text-sm text-gray-700">{name}</span>
+                }
             },
             {
                 accessorKey: 'family_members_count',
@@ -288,6 +294,8 @@ export default function HouseholdTable() {
             return (
                 matches(row.original.house_number) ||
                 matches(row.original.head_name) ||
+                matches(row.original.head_name_male) ||
+                matches(row.original.head_name_female) ||
                 matches(row.original.head_gender) ||
                 matches(row.original.mobile_numbers) ||
                 matches(row.original.sons_names) ||

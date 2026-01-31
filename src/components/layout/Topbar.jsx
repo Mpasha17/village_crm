@@ -1,13 +1,12 @@
 import { Link, useLocation } from 'react-router-dom'
-import { Home, Upload } from 'lucide-react'
+import { Home } from 'lucide-react'
 import { cn } from '../../lib/utils'
 
 export default function Topbar() {
     const location = useLocation()
 
     const navItems = [
-        { path: '/', label: 'Dashboard', icon: Home },
-        { path: '/import', label: 'Import Data', icon: Upload }
+        { path: '/', label: 'Dashboard', icon: Home }
     ]
 
     return (
