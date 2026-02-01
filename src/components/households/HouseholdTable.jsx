@@ -348,12 +348,12 @@ export default function HouseholdTable() {
     return (
         <div className="bg-white rounded-lg border border-gray-200">
             {/* Header */}
-            <div className="p-6 border-b border-gray-200">
-                <div className="flex items-center justify-between mb-4">
-                    <h2 className="text-xl font-semibold text-gray-900">
+            <div className="p-3 sm:p-6 border-b border-gray-200">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-3 sm:mb-4">
+                    <h2 className="text-lg sm:text-xl font-semibold text-gray-900">
                         Households - {selectedVillage.name}
                     </h2>
-                    <Button onClick={() => setIsFormOpen(true)}>
+                    <Button onClick={() => setIsFormOpen(true)} className="w-full sm:w-auto">
                         <Plus className="w-4 h-4 mr-2" />
                         Add Household
                     </Button>
@@ -362,7 +362,7 @@ export default function HouseholdTable() {
                     value={globalFilter ?? ''}
                     onChange={setGlobalFilter}
                     placeholder="Search across all fields..."
-                    className="max-w-md"
+                    className="w-full sm:max-w-md"
                 />
             </div>
 
@@ -375,7 +375,7 @@ export default function HouseholdTable() {
                                 {headerGroup.headers.map((header) => (
                                     <th
                                         key={header.id}
-                                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                        className="px-3 sm:px-6 py-2 sm:py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                                     >
                                         {flexRender(header.column.columnDef.header, header.getContext())}
                                     </th>
@@ -394,7 +394,7 @@ export default function HouseholdTable() {
                             table.getRowModel().rows.map((row) => (
                                 <tr key={row.id} className="hover:bg-gray-50">
                                     {row.getVisibleCells().map((cell) => (
-                                        <td key={cell.id} className="px-6 py-4 whitespace-nowrap">
+                                        <td key={cell.id} className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap">
                                             {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                         </td>
                                     ))}
@@ -406,8 +406,8 @@ export default function HouseholdTable() {
             </div>
 
             {/* Pagination */}
-            <div className="px-6 py-4 border-t border-gray-200 flex items-center justify-between">
-                <div className="text-sm text-gray-700">
+            <div className="px-3 sm:px-6 py-3 sm:py-4 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-3">
+                <div className="text-xs sm:text-sm text-gray-700 text-center sm:text-left">
                     Showing {table.getState().pagination.pageIndex * table.getState().pagination.pageSize + 1} to{' '}
                     {Math.min(
                         (table.getState().pagination.pageIndex + 1) * table.getState().pagination.pageSize,
@@ -424,7 +424,7 @@ export default function HouseholdTable() {
                     >
                         <ChevronLeft className="w-4 h-4" />
                     </Button>
-                    <span className="text-sm text-gray-700">
+                    <span className="text-xs sm:text-sm text-gray-700 whitespace-nowrap">
                         Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
                     </span>
                     <Button

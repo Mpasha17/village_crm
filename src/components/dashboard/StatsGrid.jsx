@@ -7,7 +7,7 @@ export default function StatsGrid() {
     const stats = getStats()
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-6 mb-4 sm:mb-8">
             <StatsCard
                 title="Total Households"
                 value={stats.totalHouseholds}
