@@ -31,12 +31,13 @@ export default function Sidebar({ isOpen, onClose }) {
             {/* Sidebar */}
             <aside
                 className={cn(
-                    'bg-white border-r border-gray-200 h-screen sticky top-0 z-50 transition-transform duration-300',
-                    // Desktop: always visible, fixed width
-                    'md:translate-x-0 md:w-64',
-                    // Mobile: slide in/out, full width overlay
-                    'fixed md:static w-64',
-                    isOpen ? 'translate-x-0' : '-translate-x-full'
+                    'bg-white border-r border-gray-200 h-screen z-50 transition-transform duration-300',
+                    // Mobile: fixed overlay, hidden by default
+                    'fixed top-0 left-0 w-64',
+                    // Desktop: static, always visible
+                    'md:static md:block',
+                    // Show/hide based on isOpen state (mobile only)
+                    isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
                 )}
             >
                 <div className="p-4 sm:p-6 border-b border-gray-200 flex items-center justify-between">
